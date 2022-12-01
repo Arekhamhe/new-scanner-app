@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    
+    <title>SQL INJECTION SCANNER</title>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh;">
+    <form method="post" style="margin-bottom: 3em;">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"></label>
+       <legend> <b>SQL INJECTION SCANNER</b></legend>
+      <br>
+        <input class="form-control form-control-lg" type="text" name="url" id="url" aria-label=".form-control-lg example" placeholder="Scan URL">
+        <br>
+        <button type="submit" class="btn btn-success">Scan</button>
+       </fieldset>
+        </div>
+    </form>
+   {% if responses %}
+   <fieldset style="max-width: 500px;">
+    <legend>Scanned Report</legend>
+    <ul>
+        {% for response in responses %}
+            <li>{{response}}</li>
+        {% endfor %}
+    </ul>
+   </fieldset>
+   {% endif %}
+   <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>
